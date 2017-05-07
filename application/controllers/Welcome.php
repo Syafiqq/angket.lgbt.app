@@ -23,13 +23,15 @@ class Welcome extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->helper('api_facade');
+        $this->load->library('session');
     }
 
 
     public function index()
     {
-
-        $this->load->view('welcome_message');
+        $is_logged = isset($_SESSION['user']['auth']);
+        $this->load->view('welcome_message', compact('is_logged'));
     }
 
     public function boilerplate()
