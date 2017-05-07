@@ -8,6 +8,13 @@
 
 (function ($)
 {
+    $.backstretch("/assets/css/baked/img/intro/intro5.jpg");
+
+    audiojs.events.ready(function ()
+    {
+        var aj = audiojs.createAll();
+    });
+
     $(function ()
     {
         $("form#login").on('submit', function (event)
