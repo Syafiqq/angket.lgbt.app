@@ -42,13 +42,15 @@ $profile['birthplace'] = $profile['birthplace'] === null ? '-' : $profile['birth
 $profile['datebirth'] = $profile['datebirth'] === null ? '-' : Carbon::createFromFormat('Y-m-d', $profile['datebirth'])->formatLocalized('%d %B %Y');
 $profile['birth'] = (($profile['birthplace'] === '-') && ($profile['datebirth'] === '-')) ? '-' : (($profile['birthplace'] === '-') ? $profile['datebirth'] : (($profile['datebirth'] === '-') ? $profile['birthplace'] : "{$profile['birthplace']}, {$profile['datebirth']}"));
 $answered['answer_at'] = Carbon::createFromFormat('Y-m-d H:i:s', $answered['answer_at'])->formatLocalized('%d %B %Y %H:%M');
-$now = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now('Asia/Jakarta'))->formatLocalized('%d %B %Y')
+$now = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now('Asia/Jakarta'))->formatLocalized('%d %B %Y');
+$counselor['school'] = $counselor['school'] === null ? '-' : $counselor['school'];
+$counselor['head'] = $counselor['head'] === null ? '-' : $counselor['head'];
+$counselor['head_credential'] = $counselor['head_credential'] === null ? '-' : $counselor['head_credential'];
 ?>
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="raw/css/report/print-report-counselor.css"/>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -264,21 +266,36 @@ $now = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now('Asia/Jakarta'))->for
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-8 ">
+            <div class="col-sm-1 ">
+            </div>
+            <div class="col-sm-4 no-padding-side">
+                <p class="margin-bottom-4">Kepala Sekolah SMA <?php echo $counselor['school']?></p>
+            </div>
+            <div class="col-sm-3 ">
             </div>
             <div class="col-sm-4 no-padding-side">
                 <p class="margin-bottom-4">Konselor</p>
             </div>
         </div>
         <div class="row" style="margin-top: 1.2cm">
-            <div class="col-sm-8 ">
+            <div class="col-sm-1 ">
+            </div>
+            <div class="col-sm-4 no-padding-side">
+                <p class="margin-bottom-4"><?php echo $counselor['head']?></p>
+            </div>
+            <div class="col-sm-3 ">
             </div>
             <div class="col-sm-4 no-padding-side">
                 <p class="margin-bottom-4"><?php echo $counselor['name']?></p>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-8 ">
+            <div class="col-sm-1 ">
+            </div>
+            <div class="col-sm-4 no-padding-side">
+                <p class="margin-bottom-4"><?php echo $counselor['head_credential']?></p>
+            </div>
+            <div class="col-sm-3 ">
             </div>
             <div class="col-sm-4 no-padding-side">
                 <p class="margin-bottom-4"><?php echo $counselor['credential']?></p>
