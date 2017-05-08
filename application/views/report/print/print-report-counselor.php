@@ -48,6 +48,7 @@ $now = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now('Asia/Jakarta'))->for
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="raw/css/report/print-report-counselor.css"/>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -121,11 +122,13 @@ $now = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now('Asia/Jakarta'))->for
                 <img src="<?php echo base_url('/assets/img/avatar/logo/logo.png') ?>" alt="UM" class="img-rounded img-responsive center-block" style="width: 3.5cm; height: 3.5cm">
             </div>
             <div class="col-sm-9">
-                <p id="header_department">KEMENTERIAN RISET, TEKNOLOGI, DAN PENDIDIKAN TINGGI</p>
-                <p id="header_university">UNIVERSITAS NEGERI MALANG (UM)</p>
-                <p id="header_faculty">FAKULTAS ILMU PENDIDIKAN</p>
-                <p id="header_u_address">Jalan Semarang 5 Malang 65145</p>
-                <p id="header_u_desc">Telepon: 0341-566962, Laman: www.um.ac.id</p>
+                <p class="margin-bottom-2" id="header_department">KEMENTERIAN RISET, TEKNOLOGI, DAN PENDIDIKAN TINGGI</p>
+                <p class="margin-bottom-2" id="header_university">UNIVERSITAS NEGERI MALANG (UM)</p>
+                <p class="margin-bottom-2" id="header_faculty">FAKULTAS ILMU PENDIDIKAN</p>
+                <p class="margin-bottom-2" id="header_faculty">JURUSAN BIMBINGAN DAN KONSELING</p>
+                <p> </p>
+                <p class="margin-bottom-2" id="header_u_address">Jalan Semarang 5 Malang 65145</p>
+                <p class="margin-bottom-2" id="header_u_desc">Telepon: 0341-566962, Laman: www.um.ac.id</p>
             </div>
         </div><!--/row-->
         <div class="row vertical-align">
@@ -202,10 +205,10 @@ $now = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now('Asia/Jakarta'))->for
                 <div class="col-sm-1">
                 </div>
                 <div class="col-sm-2 text-right">
-                    <p>Variabel :</p>
+                    <p class="margin-bottom-4">Aspek :</p>
                 </div>
                 <div class="col-sm-8  no-padding-side">
-                    <p><?php echo $categories[".{$rv['category']}"]['name']?></p>
+                    <p class="margin-bottom-4"><?php echo $categories[".{$rv['category']}"]['name']?></p>
                 </div>
                 <div class="col-sm-1">
                 </div>
@@ -214,10 +217,10 @@ $now = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now('Asia/Jakarta'))->for
                 <div class="col-sm-1">
                 </div>
                 <div class="col-sm-2 text-right">
-                    <p>Prosentase :</p>
+                    <p class="margin-bottom-4">Persentase :</p>
                 </div>
                 <div class="col-sm-8  no-padding-side">
-                    <p><?php printf('<td>%.4f %%</td>',$rv['value']);?></p>
+                    <p class="margin-bottom-4"><?php printf('<td>%.4f %%</td>',$rv['value']);?></p>
                 </div>
                 <div class="col-sm-1">
                 </div>
@@ -226,7 +229,7 @@ $now = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now('Asia/Jakarta'))->for
                 <div class="col-sm-1 ">
                 </div>
                 <div class="col-sm-2 text-right">
-                    <p>Interpretasi :</p>
+                    <p class="margin-bottom-4">Interpretasi :</p>
                 </div>
                 <div class="col-sm-8 no-padding-side text-justified">
                     <ol>
@@ -257,28 +260,28 @@ $now = Carbon::createFromFormat('Y-m-d H:i:s', Carbon::now('Asia/Jakarta'))->for
             <div class="col-sm-8 ">
             </div>
             <div class="col-sm-4 no-padding-side">
-                <p>Malang, <?php echo $now?></p>
+                <p class="margin-bottom-4">Malang, <?php echo $now?></p>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-8 ">
             </div>
             <div class="col-sm-4 no-padding-side">
-                <p>Konselor</p>
+                <p class="margin-bottom-4">Konselor</p>
             </div>
         </div>
         <div class="row" style="margin-top: 1.2cm">
             <div class="col-sm-8 ">
             </div>
             <div class="col-sm-4 no-padding-side">
-                <p><?php echo $counselor['name']?></p>
+                <p class="margin-bottom-4"><?php echo $counselor['name']?></p>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-8 ">
             </div>
             <div class="col-sm-4 no-padding-side">
-                <p><?php echo $counselor['credential']?></p>
+                <p class="margin-bottom-4"><?php echo $counselor['credential']?></p>
             </div>
         </div>
     </div>
