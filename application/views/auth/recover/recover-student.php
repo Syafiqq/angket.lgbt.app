@@ -26,6 +26,8 @@
 
     <link href="<?php echo base_url('/assets/bower_components/bootstrap/dist/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('/assets/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('/assets/css/auth/recover-student.min.css') ?>" rel="stylesheet">
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,34 +39,51 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <form id="recover" action="<?php echo site_url('auth/do_recover') ?>" method="post">
-                <div class="form-group">
-                    <label for="name">Nama</label>
-                    <input type="text" class="form-control" id="name" placeholder="Nama" name="name">
-                </div>
-                <div class="form-group">
-                    <label for="credential">NISN</label>
-                    <input type="number" class="form-control" id="credential" placeholder="NISN" name="credential">
-                </div>
-                <div class="form-group">
-                    <label for="role">Jenis Kelamin</label>
-                    <select id="role" name="gender" class="form-control">
-                        <option value="male">Pria</option>
-                        <option value="female">Wanita</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="created">Tanggal Pembuatan Akun</label>
-                    <input type="text" class="form-control" id="created" name="created"/>
-                </div>
-                <input type="hidden" name="role" value="student">
-                <button type="submit" class="btn btn-default">Recover</button>
-            </form>
+    <form class="form-horizontal" role="form" id="recover" action="<?php echo site_url('auth/do_recover') ?>" method="post" style="margin-top: 40px">
+        <div class="form-group">
+            <label for="name" class="col-sm-3 control-label">Nama</label>
+            <div class="col-sm-9">
+                <input type="text" id="name" placeholder="Nama" name="name" class="form-control" autofocus>
+            </div>
         </div>
-    </div>
-</div>
+        <div class="form-group">
+            <label for="credential" class="col-sm-3 control-label">NISN</label>
+            <div class="col-sm-9">
+                <input type="number" id="credential" name="credential" placeholder="NISN" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="role" class="col-sm-3 control-label">Jenis Kelamin</label>
+            <div class="col-sm-9">
+                <select id="role" name="gender" class="form-control">
+                    <option value="male">Laki Laki</option>
+                    <option value="female">Perempuan</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="created" class="col-sm-3 control-label">Tanggal Pembuatan Akun</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="created" name="created" placeholder="Tanggal Pembuatan Akun" />
+            </div>
+        </div>
+        <input type="hidden" name="role" value="student">
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                <button type="submit" class="btn btn-primary btn-block">Cek</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-6 text-left">
+                <a href="<?php echo site_url('auth/recover?role=counselor') ?>" class="text-center new-account">Anda Konselor ?</a>
+            </div>
+            <div class="col-sm-6 text-right">
+                <a href="<?php echo site_url('auth/login?role=student') ?>" class="text-center new-account">Punya Akun ? Login.</a>
+            </div>
+        </div> <!-- /.form-group -->
+    </form> <!-- /form -->
+</div> <!-- ./container -->
+<audio src="<?php echo base_url('/assets/audio/mp3/black_heaven.mp3') ?>" preload="auto" autoplay loop/>
 
 <script src="<?php echo base_url('/assets/bower_components/jquery/dist/jquery.min.js') ?>"></script>
 <script>window.jQuery || document.write('<script src="<?php echo base_url('/assets/bower_components/jquery/dist/jquery.min.js') ?>"><\/script>')</script>
@@ -76,6 +95,8 @@
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/moment/min/moment.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/assets/bower_components/jquery-backstretch/jquery.backstretch.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/assets/bower_components/audiojs/audiojs/audio.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/js/auth/recover-student.min.js') ?>"></script>
 
 </body>

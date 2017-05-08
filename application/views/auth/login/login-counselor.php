@@ -40,7 +40,7 @@
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
             <div class="account-wall">
-                <img class="profile-img" src="<?php echo base_url('/assets/img/avatar/default/default.png')?>"
+                <img class="profile-img" src="<?php echo base_url('/assets/img/ui/landing_page/fix/gender.jpg')?>"
                      alt="">
                 <form id="login" class="form-signin" action="<?php echo site_url('auth/do_login') ?>" method="post">
                     <input type="number" class="form-control" id="credential" placeholder="NIP/NIK" name="credential">
@@ -48,6 +48,8 @@
                     <input type="hidden" name="role" value="counselor">
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
 
+                    <span class="clearfix"></span>
+                    <a href="<?php echo site_url('auth/recover?role=counselor')?>" class="pull-left need-help">Lupa Password ? </a>
                     <a href="<?php echo site_url('auth/login?role=student')?>" class="pull-right need-help">Anda Siswa ? </a><span class="clearfix"></span>
                 </form>
                 <a href="<?php echo site_url('auth/register')?>" class="text-center new-account">Buat Akun Baru !</a>
