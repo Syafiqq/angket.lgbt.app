@@ -62,9 +62,12 @@ class Inventory extends CI_Controller
             }
             case 'student' :
             {
+                $this->load->model('minventory', 'inventory');
+                $have_entry = $this->inventory->getAnsweredUser($_SESSION['user']['auth']['id']);
+                $have_entry = count($have_entry) > 0;
                 $b_test = $this->allowedToTakeTest();
                 $b_complete = $this->isStudentIdentityIsComplete();
-                $this->load->view('inventory/view/view-inventory-student', compact('b_test', 'b_complete'));
+                $this->load->view('inventory/view/view-inventory-student', compact('b_test', 'b_complete', 'have_entry'));
 
                 return;
             }
@@ -123,6 +126,8 @@ class Inventory extends CI_Controller
                 if ($allowed)
                 {
                     $this->load->model('minventory', 'inventory');
+                    $have_entry = $this->inventory->getAnsweredUser($_SESSION['user']['auth']['id']);
+                    $have_entry = count($have_entry) > 0;
                     $questions = $this->inventory->getQuestionByActive(1);
                     $isMale = $_SESSION['user']['auth']['gender'] === 'male';
                     foreach ($questions as $qk => $qv)
@@ -143,7 +148,7 @@ class Inventory extends CI_Controller
                         }
                     }
                     $options = $this->inventory->getOptions();
-                    $this->load->view('inventory/test/test-inventory-student', compact('questions', 'options'));
+                    $this->load->view('inventory/test/test-inventory-student', compact('questions', 'options', 'have_entry'));
                 }
                 else
                 {
@@ -168,6 +173,8 @@ class Inventory extends CI_Controller
             case 'student' :
             {
                 $this->load->model('minventory', 'inventory');
+                $have_entry = $this->inventory->getAnsweredUser($_SESSION['user']['auth']['id']);
+                $have_entry = count($have_entry) > 0;
                 $_answered = $this->inventory->getAnsweredUser($_SESSION['user']['auth']['id']);
                 $answered = [];
                 $result = $this->inventory->getAnsweredResultByUser($_SESSION['user']['auth']['id']);
@@ -219,7 +226,7 @@ class Inventory extends CI_Controller
                     $answered[".{$rv['answer_id']}"]['category'][".{$rv['category']}"] = $rv['value'];
                 }
                 unset($_answered, $result);
-                $this->load->view('inventory/result/result-inventory-student', compact('answered', 'categories'));
+                $this->load->view('inventory/result/result-inventory-student', compact('answered', 'categories', 'have_entry'));
 
                 return;
             }
@@ -323,19 +330,17 @@ class Inventory extends CI_Controller
             if (isset($_POST['id']) &&
                 isset($_POST['question']) &&
                 isset($_POST['category']) &&
-                isset($_POST['favour']) &&
                 isset($_POST['active'])
             )
             {
                 if (
                     (strlen($_POST['question']) > 0) &&
                     (strlen($_POST['category']) > 0) &&
-                    (strlen($_POST['favour']) > 0) &&
                     (strlen($_POST['active']) > 0)
                 )
                 {
                     $this->load->model('minventory', 'inventory');
-                    $this->inventory->updateQuestionByID($_POST['id'], $_POST['question'], $_POST['category'], $_POST['favour'], $_POST['active']);
+                    $this->inventory->updateQuestionByID($_POST['id'], $_POST['question'], $_POST['category'], $_POST['active']);
                     echo apiMakeCallback(API_SUCCESS, 'Update Soal Berhasil', ['notify' => [['Update Soal Berhasil', 'success']]], site_url('/inventory'));
                 }
                 else
@@ -498,7 +503,7 @@ class Inventory extends CI_Controller
                 $this->load->model('mauth', 'auth');
                 $this->auth->updateStudentActivation($aq, 0);
                 $_SESSION['user']['auth']['is_active'] = 0;
-                echo apiMakeCallback(API_SUCCESS, 'Pengerjaan Selesai', ['notify' => [['Pengerjaan Selesai', 'success']]], site_url('/inventory'));
+                echo apiMakeCallback(API_SUCCESS, 'Pengerjaan Selesai', ['notify' => [['Pengerjaan Selesai', 'success']]], site_url('/inventory/result'));
             }
             else
             {
