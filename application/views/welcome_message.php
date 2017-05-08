@@ -67,7 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- FullScreen -->
 <div class="intro-header">
     <div class="col-xs-12 text-center abcen1">
-        <h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">Konseling</h1>
+        <h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">Inventori</h1>
         <h2 class="h3_home wow fadeIn" data-wow-delay="0.4s">LGBT</h2>
         <h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Lesbian Gay Bisexual dan Transgender</h3>
         <?php if (!$is_logged)
