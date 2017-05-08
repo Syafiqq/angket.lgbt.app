@@ -56,7 +56,10 @@ class Dashboard extends CI_Controller
             }
             case 'student' :
             {
-                $this->load->view('dashboard/view/view-dashboard-student');
+                $this->load->model('minventory', 'inventory');
+                $have_entry = $this->inventory->getAnsweredUser($_SESSION['user']['auth']['id']);
+                $have_entry = count($have_entry) > 0;
+                $this->load->view('dashboard/view/view-dashboard-student', compact('have_entry'));
 
                 return;
             }

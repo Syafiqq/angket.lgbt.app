@@ -68,10 +68,10 @@ class Minventory extends CI_Model
         return $result->result_array();
     }
 
-    public function updateQuestionByID($id, $question, $category, $favour, $active)
+    public function updateQuestionByID($id, $question, $category, $active)
     {
-        $query = 'UPDATE `question` SET `question`=?,`is_active`=?,`favour`=?,`category`=? WHERE `id` = ?';
-        $this->db->query($query, [(string)$question, (int)$active, (int)$favour, (int)$category, (int)$id]);
+        $query = 'UPDATE `question` SET `question`=?,`is_active`=?,`category`=? WHERE `id` = ?';
+        $this->db->query($query, [(string)$question, (int)$active, (int)$category, (int)$id]);
     }
 
     public function getOptions()

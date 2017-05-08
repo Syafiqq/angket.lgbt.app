@@ -42,6 +42,7 @@ $profile['datebirth'] = $profile['datebirth'] === null ? null : $profile['datebi
 
     <link href="<?php echo base_url('/assets/bower_components/bootstrap/dist/css/bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('/assets/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('/assets/css/profile/edit/edit-student.min.css') ?>" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,7 +53,7 @@ $profile['datebirth'] = $profile['datebirth'] === null ? null : $profile['datebi
     <script src="<?php echo base_url('/assets/js/vendor/modernizr-2.8.3.min.js') ?>"></script>
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" id="nav_container" style=" opacity: 1;background: url('/assets/img/ui/header.png');background-size: 166px 50px;background-repeat: repeat;">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -62,26 +63,48 @@ $profile['datebirth'] = $profile['datebirth'] === null ? null : $profile['datebi
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo site_url('dashboard') ?>">Site</a>
+            <a class="navbar-brand" href="<?php echo site_url('dashboard') ?>">
+                <span class="label label-default" style="font-size: 18px; opacity: 1">LGBT</span>
+            </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
+                <li>
+                    <a href="<?php echo site_url('inventory') ?>">
+                        <span class="label label-default" style="font-size: 14px; opacity: 1">Inventory</span>
+                    </a>
+                </li>
+                <?php if ($have_entry)
+                {
+                    ?>
+                    <li>
+                        <a href="<?php echo site_url('inventory/result') ?>">
+                            <span class="label label-default" style="font-size: 14px; opacity: 1">Hasil</span>
+                        </a>
+                    </li>
+                    <?php
+                }
+                ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a id="logout" href="<?php echo site_url('auth/do_logout') ?>">Logout</a>
+                    <a href="<?php echo site_url('profile') ?>">
+                        <span class="label label-default" style="font-size: 14px; opacity: 1">Profile</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('profile') ?>">Profile</a>
+                    <a id="logout" href="<?php echo site_url('auth/do_logout') ?>">
+                        <span class="label label-default" style="font-size: 14px; opacity: 1">Logout</span>
+                    </a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container">
+<div class="container" id="content_container">
     <form class="form-horizontal">
         <div class="form-group">
             <label for="avatar" class="col-sm-2 control-label">Avatar</label>
@@ -156,6 +179,7 @@ $profile['datebirth'] = $profile['datebirth'] === null ? null : $profile['datebi
         </div>
     </form>
 </div>
+<audio src="<?php echo base_url('/assets/audio/mp3/black_heaven.mp3') ?>" preload="auto" autoplay loop/>
 
 <script src="<?php echo base_url('/assets/bower_components/jquery/dist/jquery.min.js') ?>"></script>
 <script>window.jQuery || document.write('<script src="<?php echo base_url('/assets/bower_components/jquery/dist/jquery.min.js') ?>"><\/script>')</script>
@@ -170,6 +194,8 @@ $profile['datebirth'] = $profile['datebirth'] === null ? null : $profile['datebi
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/jquery-serialize-object/dist/jquery.serialize-object.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/assets/bower_components/jquery-backstretch/jquery.backstretch.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/assets/bower_components/audiojs/audiojs/audio.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/js/profile/edit/edit-profile-student.min.js') ?>"></script>
 </body>
 </html>

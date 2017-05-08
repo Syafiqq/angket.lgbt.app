@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="<?php echo base_url('/assets/css/main.css') ?>">
 
     <link href="<?php echo base_url('/assets/bower_components/bootstrap/dist/css/bootstrap.min.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('/assets/css/auth/recover-student-confirm.min.css') ?>" rel="stylesheet">
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,23 +39,34 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <form id="recover" action="<?php echo site_url('auth/do_recover_confirm') ?>" method="post">
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
-                </div>
-                <div class="form-group">
-                    <label for="re-password">Ulangi Password</label>
-                    <input type="password" class="form-control" id="re-password" placeholder="Ulangi Password" name="re_password">
-                </div>
-                <input type="hidden" name="token" value="<?php echo $token ?>">
-                <button type="submit" class="btn btn-default">Recover</button>
-            </form>
+    <form class="form-horizontal" role="form" id="recover" action="<?php echo site_url('auth/do_recover_confirm') ?>" method="post" style="margin-top: 40px">
+        <div class="form-group">
+            <label for="password" class="col-sm-3 control-label">Password</label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+            </div>
         </div>
-    </div>
-</div>
+        <div class="form-group">
+            <label for="re-password" class="col-sm-3 control-label">Ulangi Password</label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control" id="re-password" placeholder="Ulangi Password" name="re_password">
+            </div>
+        </div>
+        <input type="hidden" name="token" value="<?php echo $token ?>">
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                <button type="submit" class="btn btn-primary btn-block">Recover</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12 text-right">
+                <a href="<?php echo site_url('auth/login?role=student') ?>" class="text-center new-account">Punya Akun ? Login.</a>
+            </div>
+        </div> <!-- /.form-group -->
+    </form> <!-- /form -->
+</div> <!-- ./container -->
+<audio src="<?php echo base_url('/assets/audio/mp3/black_heaven.mp3') ?>" preload="auto" autoplay loop/>
+
 
 <script src="<?php echo base_url('/assets/bower_components/jquery/dist/jquery.min.js') ?>"></script>
 <script>window.jQuery || document.write('<script src="<?php echo base_url('/assets/bower_components/jquery/dist/jquery.min.js') ?>"><\/script>')</script>
@@ -63,6 +76,8 @@
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/tether/dist/js/tether.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/jquery-serialize-object/dist/jquery.serialize-object.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/assets/bower_components/jquery-backstretch/jquery.backstretch.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/assets/bower_components/audiojs/audiojs/audio.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/js/auth/recover-student-confirm.min.js') ?>"></script>
 
 </body>

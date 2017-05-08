@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="<?php echo base_url('/assets/css/main.css') ?>">
 
     <link href="<?php echo base_url('/assets/bower_components/bootstrap/dist/css/bootstrap.min.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('/assets/css/auth/login-counselor.min.css') ?>" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,22 +38,27 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <form id="login" action="<?php echo site_url('auth/do_login') ?>" method="post">
-                <div class="form-group">
-                    <label for="credential">NIP/NIK</label>
-                    <input type="number" class="form-control" id="credential" placeholder="NIP/NIK" name="credential" value="125150200111112">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" value="12345">
-                </div>
-                <input type="hidden" name="role" value="counselor">
-                <button type="submit" class="btn btn-default">Login</button>
-            </form>
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <div class="account-wall">
+                <img class="profile-img" src="<?php echo base_url('/assets/img/ui/landing_page/fix/gender.jpg')?>"
+                     alt="">
+                <form id="login" class="form-signin" action="<?php echo site_url('auth/do_login') ?>" method="post">
+                    <input type="number" class="form-control" id="credential" placeholder="NIP/NIK" name="credential">
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                    <input type="hidden" name="role" value="counselor">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+
+                    <span class="clearfix"></span>
+                    <a href="<?php echo site_url('auth/recover?role=counselor')?>" class="pull-left need-help">Lupa Password ? </a>
+                    <a href="<?php echo site_url('auth/login?role=student')?>" class="pull-right need-help">Anda Siswa ? </a><span class="clearfix"></span>
+                </form>
+                <a href="<?php echo site_url('auth/register')?>" class="text-center new-account">Buat Akun Baru !</a>
+            </div>
         </div>
     </div>
+    <audio src="<?php echo base_url('/assets/audio/mp3/black_heaven.mp3') ?>" preload="auto" autoplay loop/>
 </div>
+
 
 <script src="<?php echo base_url('/assets/bower_components/jquery/dist/jquery.min.js') ?>"></script>
 <script>window.jQuery || document.write('<script src="<?php echo base_url('/assets/bower_components/jquery/dist/jquery.min.js') ?>"><\/script>')</script>
@@ -62,6 +68,8 @@
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/tether/dist/js/tether.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/jquery-serialize-object/dist/jquery.serialize-object.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/assets/bower_components/jquery-backstretch/jquery.backstretch.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/assets/bower_components/audiojs/audiojs/audio.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/js/auth/login-counselor.min.js') ?>"></script>
 
 </body>

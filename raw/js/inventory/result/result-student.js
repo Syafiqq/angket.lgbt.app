@@ -8,6 +8,13 @@
 
 (function ($)
 {
+    $.backstretch("/assets/img/ui/landing_page/fix/backgroundinner.jpg");
+
+    audiojs.events.ready(function ()
+    {
+        var aj = audiojs.createAll();
+    });
+    $('table#inventory_result').DataTable();
     $(function ()
     {
         $("a#logout").on('click', function (event)

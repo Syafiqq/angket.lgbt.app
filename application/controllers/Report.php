@@ -155,6 +155,8 @@ class Report extends CI_Controller
                 if (isset($_GET['answer']))
                 {
                     $this->load->model('minventory', 'inventory');
+                    $have_entry = $this->inventory->getAnsweredUser($_SESSION['user']['auth']['id']);
+                    $have_entry = count($have_entry) > 0;
                     $answered = $this->inventory->getAnsweredUserByAnswerID($_SESSION['user']['auth']['id'], $_GET['answer']);
                     if (count($answered) > 0)
                     {
@@ -215,7 +217,7 @@ class Report extends CI_Controller
 
                         $profile = $_SESSION['user']['auth'];
 
-                        $this->load->view('report/display/display-report-student', compact('profile', 'categories', 'result', 'answered'));
+                        $this->load->view('report/display/display-report-student', compact('profile', 'categories', 'result', 'answered', 'have_entry'));
 
                         return;
                     }

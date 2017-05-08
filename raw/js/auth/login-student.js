@@ -8,6 +8,8 @@
 
 (function ($)
 {
+    $.backstretch("/assets/img/ui/landing_page/fix/lpw.jpg");
+
     audiojs.events.ready(function ()
     {
         var aj = audiojs.createAll();

@@ -8,6 +8,13 @@
 
 (function ($)
 {
+    $.backstretch("/assets/img/ui/landing_page/fix/back-konselor.jpg");
+
+    audiojs.events.ready(function ()
+    {
+        var aj = audiojs.createAll();
+    });
+    
     $('table#student_tb').DataTable();
 
     $(function ()

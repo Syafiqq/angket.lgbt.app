@@ -8,9 +8,19 @@
 
 (function ($)
 {
+    $.backstretch("/assets/img/ui/landing_page/fix/lpw.jpg");
+
+    audiojs.events.ready(function ()
+    {
+        var aj = audiojs.createAll();
+    });
+
+
     $('input#created').datetimepicker({
         format: 'YYYY-MM-DD',
-        maxDate: moment()
+        maxDate: moment(),
+        useCurrent: false,
+        defaultDate: false
     });
 
     $(function ()

@@ -33,6 +33,7 @@ if(!isset($questions))
     <link href="<?php echo base_url('/assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('/assets/bower_components/datatables-autofill-bootstrap/css/autoFill.bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('/assets/bower_components/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('/assets/css/inventory/test/test-student.min.css') ?>" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,7 +44,7 @@ if(!isset($questions))
     <script src="<?php echo base_url('/assets/js/vendor/modernizr-2.8.3.min.js') ?>"></script>
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" id="nav_container" style=" opacity: 1;background: url('/assets/img/ui/header.png');background-size: 166px 50px;background-repeat: repeat;">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -53,30 +54,49 @@ if(!isset($questions))
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo site_url('dashboard') ?>">Site</a>
+            <a class="navbar-brand" href="<?php echo site_url('dashboard') ?>">
+                <span class="label label-default" style="font-size: 18px; opacity: 1">LGBT</span>
+            </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="<?php echo site_url('inventory') ?>">Inventory</a>
+                    <a href="<?php echo site_url('inventory') ?>">
+                        <span class="label label-default" style="font-size: 14px; opacity: 1">Inventory</span>
+                    </a>
                 </li>
-
+                <?php if ($have_entry)
+                {
+                    ?>
+                    <li>
+                        <a href="<?php echo site_url('inventory/result') ?>">
+                            <span class="label label-default" style="font-size: 14px; opacity: 1">Hasil</span>
+                        </a>
+                    </li>
+                    <?php
+                }
+                ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a id="logout" href="<?php echo site_url('auth/do_logout') ?>">Logout</a>
+                    <a href="<?php echo site_url('profile') ?>">
+                        <span class="label label-default" style="font-size: 14px; opacity: 1">Profile</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('profile') ?>">Profile</a>
+                    <a id="logout" href="<?php echo site_url('auth/do_logout') ?>">
+                        <span class="label label-default" style="font-size: 14px; opacity: 1">Logout</span>
+                    </a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container">
+
+<div class="container" id="content_container">
     <form id="test" action="<?php echo site_url('inventory/do_calculate') ?>" method="post" class="form-horizontal">
         <div class="table table-responsive">
             <table id="inventory_test" class="table table-striped">
@@ -119,6 +139,7 @@ if(!isset($questions))
         </div>
     </form>
 </div>
+<audio src="<?php echo base_url('/assets/audio/mp3/black_heaven.mp3') ?>" preload="auto" autoplay loop/>
 
 <script src="<?php echo base_url('/assets/bower_components/jquery/dist/jquery.min.js') ?>"></script>
 <script>window.jQuery || document.write('<script src="<?php echo base_url('/assets/bower_components/jquery/dist/jquery.min.js') ?>"><\/script>')</script>
@@ -134,6 +155,8 @@ if(!isset($questions))
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/datatables-autofill-bootstrap/js/autoFill.bootstrap.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/datatables.net-buttons/js/dataTables.buttons.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/assets/bower_components/jquery-backstretch/jquery.backstretch.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/assets/bower_components/audiojs/audiojs/audio.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/js/inventory/test/test-student.min.js') ?>"></script>
 </body>
 </html>

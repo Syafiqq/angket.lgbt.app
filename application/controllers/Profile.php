@@ -55,7 +55,11 @@ class Profile extends CI_Controller
             }
             case 'student' :
             {
-                $this->load->view('profile/view/view-profile-student', ['profile' => $_SESSION['user']['auth']]);
+                $this->load->model('minventory', 'inventory');
+                $have_entry = $this->inventory->getAnsweredUser($_SESSION['user']['auth']['id']);
+                $have_entry = count($have_entry) > 0;
+                $profile = $_SESSION['user']['auth'];
+                $this->load->view('profile/view/view-profile-student', compact('profile', 'have_entry'));
 
                 return;
             }
@@ -74,7 +78,11 @@ class Profile extends CI_Controller
             }
             case 'student' :
             {
-                $this->load->view('profile/edit/edit-profile-student', ['profile' => $_SESSION['user']['auth']]);
+                $this->load->model('minventory', 'inventory');
+                $have_entry = $this->inventory->getAnsweredUser($_SESSION['user']['auth']['id']);
+                $have_entry = count($have_entry) > 0;
+                $profile = $_SESSION['user']['auth'];
+                $this->load->view('profile/edit/edit-profile-student', compact('profile', 'have_entry'));
 
                 return;
             }

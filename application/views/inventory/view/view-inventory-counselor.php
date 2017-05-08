@@ -53,6 +53,7 @@ unset($_categories);
     <link href="<?php echo base_url('/assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('/assets/bower_components/datatables-autofill-bootstrap/css/autoFill.bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('/assets/bower_components/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('/assets/css/inventory/view/view-counselor.min.css') ?>" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -63,7 +64,7 @@ unset($_categories);
     <script src="<?php echo base_url('/assets/js/vendor/modernizr-2.8.3.min.js') ?>"></script>
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" id="nav_container" style=" opacity: 1;background: url('/assets/img/ui/header.png');background-size: 166px 50px;background-repeat: repeat;">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -73,34 +74,39 @@ unset($_categories);
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo site_url('dashboard') ?>">Site</a>
+            <a class="navbar-brand" href="<?php echo site_url('dashboard') ?>"><span class="label label-default" style="font-size: 18px; opacity: 1">LGBT</span></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="<?php echo site_url('inventory') ?>">Inventory</a>
+                    <a href="<?php echo site_url('inventory') ?>"><span class="label label-default" style="font-size: 14px; opacity: 1">Inventory</span></a>
                 </li>
-
+                <li>
+                    <a href="<?php echo site_url('student') ?>"><span class="label label-default" style="font-size: 14px; opacity: 1">Siswa</span></a>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('student/report') ?>"><span class="label label-default" style="font-size: 14px; opacity: 1">Laporan</span></a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a id="logout" href="<?php echo site_url('auth/do_logout') ?>">Logout</a>
+                    <a href="<?php echo site_url('profile') ?>"><span class="label label-default" style="font-size: 14px; opacity: 1">Profile</span></a>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('profile') ?>">Profile</a>
+                    <a id="logout" href="<?php echo site_url('auth/do_logout') ?>"><span class="label label-default" style="font-size: 14px; opacity: 1">Logout</span></a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container">
+<div class="container" id="content_container">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Panel heading</div>
+                <div class="panel-heading">Daftar Pernyataan</div>
                 <div class="panel-body">
                     <div class="col-sm-2 col-sm-offset-10">
                         <a class="btn btn-default" href="<?php echo site_url('inventory/add') ?>" role="button">Tambah Inventory</a>
@@ -111,9 +117,9 @@ unset($_categories);
                         <thead>
                         <tr>
                             <th style="width: 40px">No</th>
-                            <th>Pertanyaan</th>
-                            <th style="width: 150px">Kategori</th>
-                            <th style="width: 150px">
+                            <th>Pernyataan</th>
+                            <th style="width: 150px">Sub Variable</th>
+                            <th style="width: 150px; display: none">
                                 <i>Favourable</i>
                             </th>
                             <th style="width: 150px">Aktif</th>
@@ -132,7 +138,7 @@ unset($_categories);
                             echo "<td>{$no}</td>";
                             echo "<td>{$question['question']}</td>";
                             echo "<td>{$categories['.'.$question['category']]['name']}</td>";
-                            echo '<td>';
+                            echo '<td style="display: none">';
                             echo "<select data-question-id=\"{$question['id']}\" id=\"favour\" name=\"favour\" class=\"form-control\" data-question-action=\"{$favourURL}\">";
                             foreach ($favourables as $favourable)
                             {
@@ -162,6 +168,7 @@ unset($_categories);
         </div>
     </div>
 </div>
+<audio src="<?php echo base_url('/assets/audio/mp3/black_heaven.mp3') ?>" preload="auto" autoplay loop/>
 
 <script src="<?php echo base_url('/assets/bower_components/jquery/dist/jquery.min.js') ?>"></script>
 <script>window.jQuery || document.write('<script src="<?php echo base_url('/assets/bower_components/jquery/dist/jquery.min.js') ?>"><\/script>')</script>
@@ -176,6 +183,8 @@ unset($_categories);
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/datatables-autofill-bootstrap/js/autoFill.bootstrap.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/datatables.net-buttons/js/dataTables.buttons.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/assets/bower_components/jquery-backstretch/jquery.backstretch.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/assets/bower_components/audiojs/audiojs/audio.min.js') ?>"></script>
 <script src="<?php echo base_url('/assets/js/inventory/view/view-counselor.min.js') ?>"></script>
 </body>
 </html>
