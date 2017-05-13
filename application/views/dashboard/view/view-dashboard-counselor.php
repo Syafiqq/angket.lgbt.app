@@ -94,7 +94,7 @@
             Selamat datang di Inventori LGBT
         </h3>
         <ul>
-            <li style="padding: 2px">Klik <a class="btn btn-default" href="<?php echo site_url('inventory') ?>" role="button"><b>Inventory</b></a>untuk memulai memodifikasi angket</li>
+            <li style="padding: 2px">Klik <a class="btn btn-default" href="<?php echo site_url('inventory') ?>" role="button"><b>Inventory</b></a> untuk memulai memodifikasi angket</li>
             <li style="padding: 2px">Klik <a class="btn btn-default" href="<?php echo site_url('student') ?>" role="button"><b>Siswa</b></a> untuk melihat daftar siswa</li>
             <li style="padding: 2px">Klik <a class="btn btn-default" href="<?php echo site_url('student/report') ?>" role="button"><b>Laporan</b></a> untuk melihat laporan siswa</li>
             <li style="padding: 2px">Klik <button id="coupon_generator" class="btn btn-default" data-coupon-action="<?php echo site_url('dashboard/do_generate_coupon') ?>" type="button"><b>Generate Kode Registrasi</b></button> untuk men-generate kode registrasi pendaftaran</li>
