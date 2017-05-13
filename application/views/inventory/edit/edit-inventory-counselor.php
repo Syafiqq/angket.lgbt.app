@@ -65,28 +65,40 @@ if (!isset($question))
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo site_url('dashboard') ?>"><span class="label label-default" style="font-size: 18px; opacity: 1">LGBT</span></a>
+            <a class="navbar-brand" href="<?php echo site_url('dashboard') ?>">
+                <span class="label label-default" style="font-size: 18px; opacity: 1">LGBT</span>
+            </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="<?php echo site_url('inventory') ?>"><span class="label label-default" style="font-size: 14px; opacity: 1">Inventory</span></a>
+                    <a href="<?php echo site_url('inventory') ?>">
+                        <span class="label label-default" style="font-size: 14px; opacity: 1">Inventory</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('student') ?>"><span class="label label-default" style="font-size: 14px; opacity: 1">Siswa</span></a>
+                    <a href="<?php echo site_url('student') ?>">
+                        <span class="label label-default" style="font-size: 14px; opacity: 1">Siswa</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('student/report') ?>"><span class="label label-default" style="font-size: 14px; opacity: 1">Laporan</span></a>
+                    <a href="<?php echo site_url('student/report') ?>">
+                        <span class="label label-default" style="font-size: 14px; opacity: 1">Laporan</span>
+                    </a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="<?php echo site_url('profile') ?>"><span class="label label-default" style="font-size: 14px; opacity: 1">Profile</span></a>
+                    <a href="<?php echo site_url('profile') ?>">
+                        <span class="label label-default" style="font-size: 14px; opacity: 1">Profile</span>
+                    </a>
                 </li>
                 <li>
-                    <a id="logout" href="<?php echo site_url('auth/do_logout') ?>"><span class="label label-default" style="font-size: 14px; opacity: 1">Logout</span></a>
+                    <a id="logout" href="<?php echo site_url('auth/do_logout') ?>">
+                        <span class="label label-default" style="font-size: 14px; opacity: 1">Logout</span>
+                    </a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -99,6 +111,22 @@ if (!isset($question))
             <label for="question" class="col-sm-2 control-label">Pertanyaan</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control option-text-disable" id="question" placeholder="Pertanyaan" name="question" value="<?php echo $question['question'] ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="gender" class="col-sm-2 control-label">Peruntukan</label>
+            <div class="col-sm-10">
+                <?php
+                echo "<select id=\"gender\" name=\"gender\" class=\"form-control\">";
+                foreach ([['id' => 'male', 'description' => 'Laki-Laki'],
+                             ['id' => 'female', 'description' => 'Perempuan'],
+                             ['id' => 'both', 'description' => 'Keduanya']] as $gender)
+                {
+                    $selected = $gender['id'] === (string)$question['gender'] ? 'selected' : '';
+                    echo "<option value=\"{$gender['id']}\" {$selected}>{$gender['description']}</option>";
+                }
+                echo '</select>';
+                ?>
             </div>
         </div>
         <div class="form-group">

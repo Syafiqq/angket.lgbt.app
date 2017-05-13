@@ -74,28 +74,40 @@ unset($_categories);
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php echo site_url('dashboard') ?>"><span class="label label-default" style="font-size: 18px; opacity: 1">LGBT</span></a>
+            <a class="navbar-brand" href="<?php echo site_url('dashboard') ?>">
+                <span class="label label-default" style="font-size: 18px; opacity: 1">LGBT</span>
+            </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="<?php echo site_url('inventory') ?>"><span class="label label-default" style="font-size: 14px; opacity: 1">Inventory</span></a>
+                    <a href="<?php echo site_url('inventory') ?>">
+                        <span class="label label-default" style="font-size: 14px; opacity: 1">Inventory</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('student') ?>"><span class="label label-default" style="font-size: 14px; opacity: 1">Siswa</span></a>
+                    <a href="<?php echo site_url('student') ?>">
+                        <span class="label label-default" style="font-size: 14px; opacity: 1">Siswa</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('student/report') ?>"><span class="label label-default" style="font-size: 14px; opacity: 1">Laporan</span></a>
+                    <a href="<?php echo site_url('student/report') ?>">
+                        <span class="label label-default" style="font-size: 14px; opacity: 1">Laporan</span>
+                    </a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="<?php echo site_url('profile') ?>"><span class="label label-default" style="font-size: 14px; opacity: 1">Profile</span></a>
+                    <a href="<?php echo site_url('profile') ?>">
+                        <span class="label label-default" style="font-size: 14px; opacity: 1">Profile</span>
+                    </a>
                 </li>
                 <li>
-                    <a id="logout" href="<?php echo site_url('auth/do_logout') ?>"><span class="label label-default" style="font-size: 14px; opacity: 1">Logout</span></a>
+                    <a id="logout" href="<?php echo site_url('auth/do_logout') ?>">
+                        <span class="label label-default" style="font-size: 14px; opacity: 1">Logout</span>
+                    </a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -119,9 +131,7 @@ unset($_categories);
                             <th style="width: 40px">No</th>
                             <th>Pernyataan</th>
                             <th style="width: 150px">Sub Variable</th>
-                            <th style="width: 150px; display: none">
-                                <i>Favourable</i>
-                            </th>
+                            <th style="width: 150px;">Peruntukan</th>
                             <th style="width: 150px">Aktif</th>
                             <th style="width: 30px">Edit</th>
                         </tr>
@@ -133,21 +143,13 @@ unset($_categories);
                         foreach ($questions as $no => $question)
                         {
                             $url = site_url("inventory/question/edit/{$question['id']}");
+                            $_gender = $question['gender'] === 'male' ? 'Laki-Laki' : ($question['gender'] === 'female' ? 'Perempuan' : 'Keduanya');
                             ++$no;
                             echo '<tr>';
                             echo "<td>{$no}</td>";
                             echo "<td>{$question['question']}</td>";
                             echo "<td>{$categories['.'.$question['category']]['name']}</td>";
-                            echo '<td style="display: none">';
-                            echo "<select data-question-id=\"{$question['id']}\" id=\"favour\" name=\"favour\" class=\"form-control\" data-question-action=\"{$favourURL}\">";
-                            foreach ($favourables as $favourable)
-                            {
-                                $favourable['description'] = ucfirst($favourable['description']);
-                                $selected = $favourable['id'] === $question['favour'] ? 'selected' : '';
-                                echo "<option value=\"{$favourable['id']}\" {$selected}>{$favourable['description']}</option>";
-                            }
-                            echo '</select>';
-                            echo '</td>';
+                            echo "<td>{$_gender}</td>";
                             echo '<td>';
                             echo "<select data-question-id=\"{$question['id']}\" id=\"active\" name=\"active\" class=\"form-control\" data-question-action=\"$activeURL\">";
                             foreach ([['id' => 1, 'description' => 'Aktif'], ['id' => 0, 'description' => 'Tidak Aktif']] as $active)

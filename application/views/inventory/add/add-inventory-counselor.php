@@ -96,6 +96,17 @@ if (!isset($favourables))
             </div>
         </div>
         <div class="form-group">
+            <label for="gender" class="col-sm-2 control-label">Peruntukan</label>
+            <div class="col-sm-10">
+                <select id="gender" name="gender" class="form-control">
+                    <option class="option-select-disable"></option>
+                    <option value="male">Laki Laki</option>
+                    <option value="female">Perempuan</option>
+                    <option value="both">Keduanya</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
             <label for="category" class="col-sm-2 control-label">Kategori</label>
             <div class="col-sm-10">
                 <select id="category" name="category" class="form-control">
