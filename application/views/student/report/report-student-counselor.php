@@ -102,7 +102,7 @@ if (!isset($reports))
                         <thead>
                         <tr>
                             <th style="width: 40px">No</th>
-                            <th>NIM</th>
+                            <th>NISN</th>
                             <th>Nama</th>
                             <th style="width: 100px">Kelas</th>
                             <th style="width: 100px">Sekolah</th>
