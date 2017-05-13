@@ -1,13 +1,3 @@
-
-.audiojs {
-    background: transparent;
-    box-shadow: none;
-}
-
-.audiojs div {
-    display: none;
-}
-
 #content_container {
     background-color: white;
     opacity: .85;
@@ -17,4 +7,33 @@
 
 #nav_container {
     opacity: .75;
+}
+
+body { padding-bottom: 70px; }
+
+div._cs-audio > .well
+{
+    margin-bottom: 0;
+    padding: 10px;
+}
+
+#plList {
+    margin: 0;
+    padding: 0;
+}
+
+#plList li {
+    cursor: pointer;
+    display: block;
+    margin: 0;
+    padding: 6px 16px;
+}
+
+#plList li:hover {
+    background-color: #d9d9d9;
+}
+
+.plSel, .plSel:hover {
+    background-color: #d9d9d9 !important;
+    cursor: default !important;
 }
