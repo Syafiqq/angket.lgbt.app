@@ -152,7 +152,7 @@ class Inventory extends CI_Controller
                     {
                         if ($qv['gender'] !== $_SESSION['user']['auth']['gender'])
                         {
-                            if($qv['gender'] !== 'both')
+                            if ($qv['gender'] !== 'both')
                             {
                                 unset($questions[$qk]);
                             }
@@ -341,18 +341,20 @@ class Inventory extends CI_Controller
         {
             if (isset($_POST['id']) &&
                 isset($_POST['question']) &&
+                isset($_POST['gender']) &&
                 isset($_POST['category']) &&
                 isset($_POST['active'])
             )
             {
                 if (
                     (strlen($_POST['question']) > 0) &&
+                    (strlen($_POST['gender']) > 0) &&
                     (strlen($_POST['category']) > 0) &&
                     (strlen($_POST['active']) > 0)
                 )
                 {
                     $this->load->model('minventory', 'inventory');
-                    $this->inventory->updateQuestionByID($_POST['id'], $_POST['question'], $_POST['category'], $_POST['active']);
+                    $this->inventory->updateQuestionByID($_POST['id'], $_POST['question'], $_POST['gender'], $_POST['category'], $_POST['active']);
                     echo apiMakeCallback(API_SUCCESS, 'Update Soal Berhasil', ['notify' => [['Update Soal Berhasil', 'success']]], site_url('/inventory'));
                 }
                 else
@@ -447,7 +449,7 @@ class Inventory extends CI_Controller
             {
                 if ($qv['gender'] !== $_SESSION['user']['auth']['gender'])
                 {
-                    if($qv['gender'] !== 'both')
+                    if ($qv['gender'] !== 'both')
                     {
                         unset($_questions[$qk]);
                     }
