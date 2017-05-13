@@ -67,7 +67,7 @@ class Report extends CI_Controller
                             $categories[".{$_cv['id']}"] = $_cv;
                         }
                         $result = $this->inventory->getAnsweredResultByID($answered['id']);
-                        $isMale = $profile === 'male';
+                        $isMale = $profile['gender'] === 'male';
                         foreach ($result as $kr => $vr)
                         {
                             if ($isMale)
