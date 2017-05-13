@@ -147,6 +147,17 @@ class Inventory extends CI_Controller
                             }
                         }
                     }
+
+                    foreach ($questions as $qk => $qv)
+                    {
+                        if ($qv['gender'] !== $_SESSION['user']['auth']['gender'])
+                        {
+                            if($qv['gender'] !== 'both')
+                            {
+                                unset($questions[$qk]);
+                            }
+                        }
+                    }
                     $options = $this->inventory->getOptions();
                     $this->load->view('inventory/test/test-inventory-student', compact('questions', 'options', 'have_entry'));
                 }
@@ -291,20 +302,21 @@ class Inventory extends CI_Controller
         if ($this->input->is_ajax_request() && ($_SERVER['REQUEST_METHOD'] === 'POST'))
         {
             if (isset($_POST['question']) &&
+                isset($_POST['gender']) &&
                 isset($_POST['category']) &&
                 isset($_POST['favour']) &&
                 isset($_POST['active'])
             )
             {
-                if (
-                    (strlen($_POST['question']) > 0) &&
+                if ((strlen($_POST['question']) > 0) &&
+                    (strlen($_POST['gender']) > 0) &&
                     (strlen($_POST['category']) > 0) &&
                     (strlen($_POST['favour']) > 0) &&
                     (strlen($_POST['active']) > 0)
                 )
                 {
                     $this->load->model('minventory', 'inventory');
-                    $this->inventory->addQuestion($_POST['question'], $_POST['category'], $_POST['favour'], $_POST['active']);
+                    $this->inventory->addQuestion($_POST['question'], $_POST['gender'], $_POST['category'], $_POST['favour'], $_POST['active']);
                     echo apiMakeCallback(API_SUCCESS, 'Tambah Soal Berhasil', ['notify' => [['Tambah Soal Berhasil', 'success']]]);
                 }
                 else
@@ -426,6 +438,16 @@ class Inventory extends CI_Controller
                 else
                 {
                     if ((int)$qv['category'] === 2)
+                    {
+                        unset($_questions[$qk]);
+                    }
+                }
+            }
+            foreach ($_questions as $qk => $qv)
+            {
+                if ($qv['gender'] !== $_SESSION['user']['auth']['gender'])
+                {
+                    if($qv['gender'] !== 'both')
                     {
                         unset($_questions[$qk]);
                     }
