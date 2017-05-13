@@ -128,7 +128,7 @@ $counselor['head_credential'] = $counselor['head_credential'] === null ? '-' : $
                 <p class="margin-bottom-2" id="header_university">UNIVERSITAS NEGERI MALANG (UM)</p>
                 <p class="margin-bottom-2" id="header_faculty">FAKULTAS ILMU PENDIDIKAN</p>
                 <p class="margin-bottom-2" id="header_faculty">JURUSAN BIMBINGAN DAN KONSELING</p>
-                <p> </p>
+                <p></p>
                 <p class="margin-bottom-2" id="header_u_address">Jalan Semarang 5 Malang 65145</p>
                 <p class="margin-bottom-2" id="header_u_desc">Telepon: 0341-566962, Laman: www.um.ac.id</p>
             </div>
@@ -199,61 +199,54 @@ $counselor['head_credential'] = $counselor['head_credential'] === null ? '-' : $
             <div class="col-sm-12">
             </div>
         </div>
-        <?php
-        foreach ($result as $rv)
-        {
-            ?>
-            <div class="row vertical-align">
-                <div class="col-sm-1">
-                </div>
-                <div class="col-sm-2 text-right">
-                    <p class="margin-bottom-4">Aspek :</p>
-                </div>
-                <div class="col-sm-8  no-padding-side">
-                    <p class="margin-bottom-4"><?php echo $categories[".{$rv['category']}"]['name']?></p>
-                </div>
-                <div class="col-sm-1">
-                </div>
-            </div>
-            <div class="row vertical-align">
-                <div class="col-sm-1">
-                </div>
-                <div class="col-sm-2 text-right">
-                    <p class="margin-bottom-4">Persentase :</p>
-                </div>
-                <div class="col-sm-8  no-padding-side">
-                    <p class="margin-bottom-4"><?php printf('<td>%.4f %%</td>',$rv['value']);?></p>
-                </div>
-                <div class="col-sm-1">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-1 ">
-                </div>
-                <div class="col-sm-2 text-right">
-                    <p class="margin-bottom-4">Interpretasi :</p>
-                </div>
-                <div class="col-sm-8 no-padding-side text-justified">
-                    <ol>
-                        <?php foreach ($rv['interpretation'] as $iv)
+
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <table class="color-transparent custom-table">
+                    <thead>
+                    <tr>
+                        <th width="150" class="text-center font-size-14px">
+                            <b>Aspek</b>
+                        </th>
+                        <th width="150" class="text-center font-size-14px">
+                            <b>Persentase</b>
+                        </th>
+                        <th class="text-center font-size-14px">
+                            <b>Interpretasi</b>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    foreach ($result as $kv => $rv)
+                    {
+                        echo '<tr>';
+                        echo "<td class=\"font-size-12px text-center bold-normal\">{$categories[".{$rv['category']}"]['name']}</td>";
+                        printf('<td class="font-size-12px text-center bold-normal">%.4f %%</td>', $rv['value']);
+                        echo "<td class=\"font-size-12px bold-normal\">";
+                        echo '<ol>';
+                        foreach ($rv['interpretation'] as $iv)
                         {
                             echo "<li>{$iv}</li>";
                         }
-                        ?>
-                    </ol>
-                </div>
-                <div class="col-sm-1">
-                </div>
+                        echo '</ol>';
+                        echo '</td>';
+                    }
+                    ?>
+                    </tbody>
+                </table>
             </div>
-            <?php
-        }
-        ?>
+        </div>
 
-        <div class="row" style="margin-top: .35cm">
+        <div class="row" style="margin-top: 1cm">
             <div class="col-sm-1 ">
             </div>
             <div class="col-sm-10 no-padding-side text-justified">
-                <p>Hasil diatas merupakan data diri <b><?php echo $profile['name'] ?></b> dalam kecenderungannya terhadap LGBT. Apabila terdapat hasil yang pdirasa tidak sesuai atau memerlukan penjelasan lebih lanjut terkait kondisi diri anda, silahkan datang kepada konselor untuk mendiskusikan hal tersebt lebih lanjut.</p>
+                <p>Hasil diatas merupakan data diri
+                    <b><?php echo $profile['name'] ?></b>
+                   dalam kecenderungannya terhadap LGBT. Apabila terdapat hasil yang pdirasa tidak sesuai atau memerlukan penjelasan lebih lanjut terkait kondisi diri anda, silahkan datang kepada konselor untuk mendiskusikan hal tersebt lebih lanjut.
+                </p>
             </div>
             <div class="col-sm-1">
             </div>
@@ -262,14 +255,14 @@ $counselor['head_credential'] = $counselor['head_credential'] === null ? '-' : $
             <div class="col-sm-8 ">
             </div>
             <div class="col-sm-4 no-padding-side">
-                <p class="margin-bottom-4">Malang, <?php echo $now?></p>
+                <p class="margin-bottom-4">Malang, <?php echo $now ?></p>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-1 ">
             </div>
             <div class="col-sm-4 no-padding-side">
-                <p class="margin-bottom-4">Kepala Sekolah SMA <?php echo $counselor['school']?></p>
+                <p class="margin-bottom-4">Kepala Sekolah SMA <?php echo $counselor['school'] ?></p>
             </div>
             <div class="col-sm-3 ">
             </div>
@@ -281,24 +274,24 @@ $counselor['head_credential'] = $counselor['head_credential'] === null ? '-' : $
             <div class="col-sm-1 ">
             </div>
             <div class="col-sm-4 no-padding-side">
-                <p class="margin-bottom-4"><?php echo $counselor['head']?></p>
+                <p class="margin-bottom-4"><?php echo $counselor['head'] ?></p>
             </div>
             <div class="col-sm-3 ">
             </div>
             <div class="col-sm-4 no-padding-side">
-                <p class="margin-bottom-4"><?php echo $counselor['name']?></p>
+                <p class="margin-bottom-4"><?php echo $counselor['name'] ?></p>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-1 ">
             </div>
             <div class="col-sm-4 no-padding-side">
-                <p class="margin-bottom-4"><?php echo $counselor['head_credential']?></p>
+                <p class="margin-bottom-4"><?php echo $counselor['head_credential'] ?></p>
             </div>
             <div class="col-sm-3 ">
             </div>
             <div class="col-sm-4 no-padding-side">
-                <p class="margin-bottom-4"><?php echo $counselor['credential']?></p>
+                <p class="margin-bottom-4"><?php echo $counselor['credential'] ?></p>
             </div>
         </div>
     </div>
