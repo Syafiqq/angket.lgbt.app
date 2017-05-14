@@ -2,7 +2,7 @@ body { padding-bottom: 70px; }
 
 div._cs-audio > .well
 {
-    margin-bottom: 0;
+    margin: 5px;
     padding: 10px;
 }
 
