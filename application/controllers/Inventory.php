@@ -159,7 +159,8 @@ class Inventory extends CI_Controller
                         }
                     }
                     $options = $this->inventory->getOptions();
-                    $this->load->view('inventory/test/test-inventory-student', compact('questions', 'options', 'have_entry'));
+                    $profile = $_SESSION['user']['auth'];
+                    $this->load->view('inventory/test/test-inventory-student', compact('questions', 'options', 'have_entry', 'profile'));
                 }
                 else
                 {
