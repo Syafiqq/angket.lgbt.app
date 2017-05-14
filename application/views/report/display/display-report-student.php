@@ -180,55 +180,44 @@ $answered['answer_at'] = Carbon::createFromFormat('Y-m-d H:i:s', $answered['answ
         <div class="col-sm-12">
         </div>
     </div>
-    <?php
-    foreach ($result as $rv)
-    {
-        ?>
-        <div class="row vertical-align">
-            <div class="col-sm-1">
-            </div>
-            <div class="col-sm-2 text-right">
-                <p>Variabel :</p>
-            </div>
-            <div class="col-sm-8  no-padding-side">
-                <p><?php echo $categories[".{$rv['category']}"]['name']?></p>
-            </div>
-            <div class="col-sm-1">
-            </div>
-        </div>
-        <div class="row vertical-align">
-            <div class="col-sm-1">
-            </div>
-            <div class="col-sm-2 text-right">
-                <p>Prosentase :</p>
-            </div>
-            <div class="col-sm-8  no-padding-side">
-                <p><?php printf('<td>%.4f %%</td>',$rv['value']);?></p>
-            </div>
-            <div class="col-sm-1">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-1 ">
-            </div>
-            <div class="col-sm-2 text-right">
-                <p>Interpretasi :</p>
-            </div>
-            <div class="col-sm-8 no-padding-side text-justified">
-                <ol>
-                    <?php foreach ($rv['interpretation'] as $iv)
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <table class="table table-stripped">
+                <thead>
+                <tr>
+                    <th width="150" class="text-center font-size-14px">
+                        <b>Aspek</b>
+                    </th>
+                    <th width="150" class="text-center font-size-14px">
+                        <b>Persentase</b>
+                    </th>
+                    <th class="text-center font-size-14px">
+                        <b>Interpretasi</b>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                foreach ($result as $kv => $rv)
+                {
+                    echo '<tr>';
+                    echo "<td class=\"font-size-12px text-center bold-normal\">{$categories[".{$rv['category']}"]['name']}</td>";
+                    printf('<td class="font-size-12px text-center bold-normal">%.4f %%</td>', $rv['value']);
+                    echo "<td class=\"font-size-12px bold-normal\">";
+                    echo '<ol>';
+                    foreach ($rv['interpretation'] as $iv)
                     {
                         echo "<li>{$iv}</li>";
                     }
-                        ?>
-                </ol>
-            </div>
-            <div class="col-sm-1">
-            </div>
+                    echo '</ol>';
+                    echo '</td>';
+                }
+                ?>
+                </tbody>
+            </table>
         </div>
-        <?php
-    }
-    ?>
+    </div>
 
     <div class="row" style="margin-top: .35cm">
         <div class="col-sm-1 ">
