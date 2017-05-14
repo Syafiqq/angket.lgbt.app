@@ -91,9 +91,9 @@ if (!isset($favourables))
 <div class="container" id="content_container">
     <form id="add" action="<?php echo site_url('inventory/do_add') ?>" method="post" class="form-horizontal">
         <div class="form-group">
-            <label for="question" class="col-sm-2 control-label">Pertanyaan</label>
+            <label for="question" class="col-sm-2 control-label">Pernyataan</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control option-text-disable" id="question" placeholder="Pertanyaan" name="question">
+                <input type="text" class="form-control option-text-disable" id="question" placeholder="Pernyataan" name="question">
             </div>
         </div>
         <div class="form-group">

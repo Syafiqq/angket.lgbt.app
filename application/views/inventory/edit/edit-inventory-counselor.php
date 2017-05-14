@@ -109,9 +109,9 @@ if (!isset($question))
 <div class="container" id="content_container">
     <form id="add" action="<?php echo site_url('inventory/do_edit') ?>" method="post" class="form-horizontal">
         <div class="form-group">
-            <label for="question" class="col-sm-2 control-label">Pertanyaan</label>
+            <label for="question" class="col-sm-2 control-label">Pernyataan</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control option-text-disable" id="question" placeholder="Pertanyaan" name="question" value="<?php echo $question['question'] ?>">
+                <input type="text" class="form-control option-text-disable" id="question" placeholder="Pernyataan" name="question" value="<?php echo $question['question'] ?>">
             </div>
         </div>
         <div class="form-group">
