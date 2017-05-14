@@ -21,6 +21,7 @@ if(!isset($questions))
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Inventory</title>
     <meta name="a temlplate" content="">
+    <meta property="uuid" content="<?php echo $profile['id'] ?>">
 
     <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url('/apple-touch-icon.png') ?>">
     <!-- Place favicon.ico in the root directory -->
@@ -98,47 +99,60 @@ if(!isset($questions))
 
 
 <div class="container" id="content_container">
-    <form id="test" action="<?php echo site_url('inventory/do_calculate') ?>" method="post" class="form-horizontal">
-        <div class="table table-responsive">
-            <table id="inventory_test" class="table table-striped">
-                <thead>
-                <tr>
-                    <th style="width: 40px">No</th>
-                    <th>Pertanyaan</th>
-                    <th style="width: 200px">Jawaban</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                $_no = 0;
-                foreach ($questions as $no => $question)
-                {
-                    ++$_no;
-                    $id = "q{$question['id']}";
-                    echo '<tr>';
-                    echo "<td>{$_no}</td>";
-                    echo "<td>{$question['question']}</td>";
-                    echo '<td>';
-                    echo "<select name=\"question[{$id}]\" class=\"form-control\">";
-                    echo '<option class="option-select-disable" value="-1"></option>';
-                    foreach ($options as $option)
-                    {
-                        echo "<option value=\"{$option['id']}\">{$option['name']}</option>";
-                    }
-                    echo '</select>';
-                    echo '</td>';
-                    echo '</tr>';
-                }
-                ?>
-                </tbody>
-            </table>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 20px">
-                <button type="submit" class="btn btn-default">Selesai</button>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row" style="margin-bottom: 8px">
+                <div class="col-sm-12">
+                    <button id="save" type="submit" class="btn btn-default">Simpan Sementara</button>
+                </div>
             </div>
         </div>
-    </form>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <form id="test" action="<?php echo site_url('inventory/do_calculate') ?>" method="post" class="form-horizontal">
+                <div class="table table-responsive">
+                    <table id="inventory_test" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th style="width: 40px">No</th>
+                            <th>Pernyataan</th>
+                            <th style="width: 200px">Jawaban</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        $_no = 0;
+                        foreach ($questions as $no => $question)
+                        {
+                            ++$_no;
+                            $id = "q{$question['id']}";
+                            echo '<tr>';
+                            echo "<td>{$_no}</td>";
+                            echo "<td>{$question['question']}</td>";
+                            echo '<td>';
+                            echo "<select name=\"question[{$id}]\" class=\"form-control _test_no\">";
+                            echo '<option class="option-select-disable" value="-1"></option>';
+                            foreach ($options as $option)
+                            {
+                                echo "<option value=\"{$option['id']}\">{$option['name']}</option>";
+                            }
+                            echo '</select>';
+                            echo '</td>';
+                            echo '</tr>';
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-bottom: 20px">
+                        <button type="submit" class="btn btn-default">Selesai</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 <div class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
@@ -189,6 +203,7 @@ if(!isset($questions))
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/jquery-backstretch/jquery.backstretch.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/bower_components/bootstrap3_player/js/bootstrap3_player.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/assets/bower_components/js-cookie/src/js.cookie.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('/assets/js/inventory/test/test-student.min.js') ?>"></script>
 </body>
 </html>

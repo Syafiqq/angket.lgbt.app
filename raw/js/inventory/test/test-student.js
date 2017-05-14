@@ -10,12 +10,14 @@
 {
     $.backstretch("/assets/img/ui/landing_page/fix/backgroundinner.jpg");
 
-    $('table#inventory_test').DataTable({
+    var table = $('table#inventory_test').DataTable({
         paging: false
     });
 
     $(function ()
     {
+        var uuid = "_schoolment_uuid_question_" + $('meta[property="uuid"]').attr('content');
+
         $("form#test").on('submit', function (event)
         {
             event.preventDefault();
@@ -161,6 +163,85 @@
                     audio.play();
                 };
             playTrack(index);
+        }
+
+        function make_json_form_data()
+        {
+            var ar = $();
+            for (var i = 0; i < table.rows()[0].length; i++)
+            {
+                ar = ar.add(table.row(i).node())
+            }
+
+            var json_obj = {};
+            ar.find('select._test_no').each(function (i, el)
+            {
+                json_obj[$(el).attr('name')] = $(el).val();
+            });
+            return json_obj;
+        }
+
+        function save_content(uuid)
+        {
+            Cookies.set(uuid, make_json_form_data());
+            $.notify({
+                message: 'Jawaban Berhasil disimpan.'
+            }, {
+                type: 'info',
+                delay: 1000,
+                timer: 1000
+            });
+        }
+
+        function load_content(uuid)
+        {
+            var _data = Cookies.getJSON(uuid);
+            console.log(_data);
+
+            jQuery.each(_data, function (k, v)
+            {
+                $("select._test_no[name=\"" + k + "\"]").find("option[value=\""+v+"\"]").prop('selected', true);
+            });
+
+            table.destroy();
+
+            table = $('table#inventory_test').DataTable({
+                searching: false,
+                ordering: false,
+                paging: false,
+                fixedHeader: true,
+                bLengthChange: false
+            });
+        }
+
+        $("button#save").on('click', function (event)
+        {
+            save_content(uuid);
+            /*
+             for (var i = 0; i < table.rows()[0].length; i++)
+             {
+             ar = ar.add(table.row(i).node())
+             }
+             console.log('serialize ');
+             console.log(+ar.find('input[type=radio]:checked').serialize());
+             var json_obj = {};
+             ar.find('input[type=radio]:checked').each(function (i, el)
+             {
+             json_obj[$(el).attr('name')] = $(el).val();
+             });
+
+             console.log('jsonobj ');
+             console.log(json_obj);*/
+            //Cookies.remove('name');
+        });
+
+        load_content(uuid);
+
+        var intervalID = window.setInterval(myCallback, 20000);
+
+        function myCallback()
+        {
+            save_content(uuid);
         }
     });
     /*
