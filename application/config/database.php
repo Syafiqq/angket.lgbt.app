@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-    'username' => 'homestead',
-    'password' => 'secret',
-    'database' => 'angket.lgbt.app',
+	'hostname' => 'mysql.idhostinger.com',
+    'username' => 'u991882757_syafi',
+    'password' => '1Muhammad1',
+    'database' => 'u991882757_syafi',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
