@@ -1,9 +1,9 @@
-var gulp     = require('gulp');
-var watch    = require('gulp-watch');
-var cleanCSS = require('gulp-clean-css');
-var rename   = require('gulp-rename');
-var uglify   = require('gulp-uglify');
-var pump     = require('pump');
+const gulp     = require('gulp');
+const watch    = require('gulp-watch');
+const cleanCSS = require('gulp-clean-css');
+const rename   = require('gulp-rename');
+const uglify   = require('gulp-uglify');
+const pump     = require('pump');
 
 gulp.task('minify-js', function (cb) {
     pump([
