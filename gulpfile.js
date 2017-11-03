@@ -1,17 +1,14 @@
-var gulp = require('gulp');
-var watch = require('gulp-watch');
-var cleanCSS = require('gulp-clean-css');
-var rename = require('gulp-rename');
-var uglify = require('gulp-uglify');
-var pump = require('pump');
+const gulp     = require('gulp');
+const watch    = require('gulp-watch');
+const cleanCSS = require('gulp-clean-css');
+const rename   = require('gulp-rename');
+const uglify   = require('gulp-uglify');
+const pump     = require('pump');
 
-gulp.task('minify-js', function (cb)
-{
+gulp.task('minify-js', function (cb) {
     pump([
-            gulp.src(['./raw/**/*.js', '!./raw/{link,link/**,views,views/**}', '!./raw/**/*.min.js'], {base: './raw/'}).pipe(rename({
-                suffix: ".min",
-                extname: ".js"
-            })),
+            gulp.src(['./raw/**/*.js', '!./raw/**/*.min.js'], {dot: true, base: './raw/'})
+                .pipe(rename({suffix: ".min", extname: ".js"})),
             uglify(),
             gulp.dest('./assets/')
         ],
@@ -19,46 +16,10 @@ gulp.task('minify-js', function (cb)
     );
 });
 
-gulp.task('minify-css', function ()
-{
-    return gulp.src(['./raw/**/*.css', '!./raw/{link,link/**,views,views/**}', '!./raw/**/*.min.css'], {base: './raw/'})
-        .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(rename({
-            suffix: ".min",
-            extname: ".css"
-        }))
+gulp.task('minify-css', function () {
+    return gulp.src(['./raw/**/*.css', '!./raw/**/*.min.css'], {dot: true, base: './raw/'})
+        .pipe(cleanCSS({compatibility: 'ie8', rebase: false}))
+        .pipe(rename({suffix: ".min", extname: ".css"}))
         .pipe(gulp.dest('./assets/'));
 });
 
-gulp.task('watch-minify-js', function ()
-{
-    // Callback mode, useful if any plugin in the pipeline depends on the `end`/`flush` event
-    return watch(['./raw/**/*.js', '!./raw/{link,link/**,views,views/**}', '!./raw/**/*.min.js'], function (cb)
-    {
-        pump([
-                gulp.src(['./raw/**/*.js', '!./raw/{link,link/**,views,views/**}', '!./raw/**/*.min.js'], {base: './raw/'}).pipe(rename({
-                    suffix: ".min",
-                    extname: ".js"
-                })),
-                uglify(),
-                gulp.dest('./assets/')
-            ],
-            cb
-        );
-    });
-});
-
-gulp.task('watch-minify-css', function ()
-{
-    // Callback mode, useful if any plugin in the pipeline depends on the `end`/`flush` event
-    return watch(['./raw/**/*.css', '!./raw/{link,link/**,views,views/**}', '!./raw/**/*.min.css'], function ()
-    {
-        return gulp.src(['./raw/**/*.css', '!./raw/{link,link/**,views,views/**}', '!./raw/**/*.min.css'], {base: './raw/'})
-            .pipe(cleanCSS({compatibility: 'ie8'}))
-            .pipe(rename({
-                suffix: ".min",
-                extname: ".css"
-            }))
-            .pipe(gulp.dest('./assets/'));
-    });
-});

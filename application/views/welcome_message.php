@@ -22,9 +22,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?php echo base_url('/assets/bower_components/bootstrap/dist/css/bootstrap.min.css') ?>" rel="stylesheet">
 
     <link href="<?php echo base_url('/assets/fonts/baked/flatify/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+<!--    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
-
+-->
     <!-- Custom CSS-->
     <link href="<?php echo base_url('/assets/css/baked/flatify/general.min.css') ?>" rel="stylesheet">
 
